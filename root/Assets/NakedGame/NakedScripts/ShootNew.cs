@@ -9,6 +9,7 @@ public class ShootNew : MonoBehaviour
     public float maxAmmo = 10f;
     public GUIText ammoText;
 	public Timer _timer;
+
  
     // Update is called once per frame
     void Update()
@@ -16,11 +17,13 @@ public class ShootNew : MonoBehaviour
         if (Input.GetButtonUp("Fire1") && ammo > 0)
         {
 
-            GameObject clone = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+
+
+          	GameObject clone = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
 			clone.transform.SetParent(gameObject.transform);
 
 
-			clone.GetComponent<Rigidbody>().AddForce(0,20,speed);
+			clone.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
 			clone.transform.SetParent(null);
 
            //clone.transform = transform.TransformDirection(0, 0, speed);

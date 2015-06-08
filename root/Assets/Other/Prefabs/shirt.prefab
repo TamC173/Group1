@@ -62,7 +62,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119458}
-  m_Mesh: {fileID: 4300000, guid: ed7f93b36369230418ce5103ebc2b219, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 3b01ba215aa0b6047ac94c3f27ad39cb, type: 3}
 --- !u!54 &5476588
 Rigidbody:
   m_ObjectHideFlags: 1
