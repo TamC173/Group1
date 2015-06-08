@@ -1116,6 +1116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTimer: 30
   timerDone: 0
+  show: 1
 --- !u!1001 &544602722
 Prefab:
   m_ObjectHideFlags: 0

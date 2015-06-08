@@ -9,7 +9,11 @@ public class Exit : MonoBehaviour {
 
         if (fTimer.timerDone)
         {
-            Application.LoadLevel("Map_Layout");
+            Application.LoadLevel(lvl);
         }
+
+
     }
+
+    public string lvl;
 }
