@@ -11,6 +11,7 @@ TagManager:
   - shirt
   - pants
   - shoes
+  - invisibleWall
   layers:
   - Default
   - TransparentFX
