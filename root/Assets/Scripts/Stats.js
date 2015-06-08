@@ -1,4 +1,4 @@
-﻿#pragma strict
+﻿/*#pragma strict
 var style : GUISkin;
 var current_score : int = 0;
 var current_enemies : int = 32;
@@ -16,4 +16,4 @@ function Update ()
     {
         print ("You Win");
     }
-}
+}*/
