@@ -3,40 +3,44 @@ using System.Collections;
 
 public class ShootNew : MonoBehaviour
 {
-    public Rigidbody projectile;
-    public float speed = 0.5f;
-    public float ammo = 0f;
+    public GameObject projectile;
+    public float speed = 25f;
+    private int ammo = 10;
     public float maxAmmo = 10f;
     public GUIText ammoText;
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
+	public Timer _timer;
+ 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp("Fire1") && ammo < maxAmmo)
+        if (Input.GetButtonUp("Fire1") && ammo > 0)
         {
 
             GameObject clone = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
-           // clone.transform = transform.TransformDirection(0, 0, speed);
-            ammo++;
+			clone.transform.SetParent(gameObject.transform);
+
+
+			clone.GetComponent<Rigidbody>().AddForce(0,20,speed);
+			clone.transform.SetParent(null);
+
+           //clone.transform = transform.TransformDirection(0, 0, speed);
+            ammo --;
+
 
             Destroy(clone.gameObject, 5);
-            //GetComponent.<ParticleSystem>().Play();
-            ParticleSystem particle = (ParticleSystem)gameObject.GetComponent("ParticleSystem");
+			ParticleSystem particle = GetComponent<ParticleSystem>();
+			particle.Play();
+            
             particle.enableEmission = true;
-        }
-        if (ammo == maxAmmo)
-        {
-            Application.LoadLevel("NakedEnd");
-        }
-    }
+			ammoText.text = "Ammo: " + ammo + "/" + maxAmmo;
+		
+		}
 
-    void OnGUI()
-    {
-        ammoText.text = "Ammo: " + ammo + "/" + maxAmmo;
-    }
+		if (ammo == 0 || _timer.timerDone == true )
+		{
+			Application.LoadLevel("NakedEnd");
+		}
+		
+	}
+	
 }

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Timer : MonoBehaviour {
 
-    public float myTimer = 2.0f;
+    public float myTimer = 30f;
+	public bool timerDone = false;
 
 	// Use this for initialization
 	void Start () {
@@ -24,11 +25,17 @@ public class Timer : MonoBehaviour {
 	void Update () 
     {
         //If Timer is greater than 0, timer will countdown
-        if (myTimer > 1)
+        if (myTimer > 0)
         {
             myTimer -= Time.deltaTime;
+			timerDone = false;
         }
-        else { Application.LoadLevel("FallingEnd"); }
+		else 
+		{ 
+			timerDone = true; 
+		}
 	
 	}
+
+   
 }

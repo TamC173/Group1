@@ -24,17 +24,17 @@ RenderSettings:
   m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
   m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 2100000, guid: d07d2172e76d3fa429e80a14d2ae3616, type: 2}
+  m_AmbientMode: 3
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9adace59679ed364790b3eb119c02607, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
 --- !u!127 &3
@@ -53,8 +53,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 3
     m_Resolution: 2
@@ -157,12 +157,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodPrefab: {fileID: 125104, guid: b8f6ebae89d0a954e9689caf75b3086d, type: 2}
   badPrefab: {fileID: 116050, guid: 6e28c9ee19f4ba745a0788669c99efe1, type: 2}
-  numberOfGood: 150
-  numberOfBad: 200
+  numberOfGood: 50
+  numberOfBad: 50
   min: -35
   max: 35
-  life: 20
-  speed: 8
+  life: 30
+  speed: 9
 --- !u!4 &528653109
 Transform:
   m_ObjectHideFlags: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3f2dd8cfbb42a458f613b770d9ff62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fTimer: {fileID: 1277039033}
 --- !u!1 &781396252
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,9 +314,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1126280709}
   - 20: {fileID: 1126280710}
+  - 111: {fileID: 1126280711}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,7 +351,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 55
+  far clip plane: 200
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -364,6 +366,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!111 &1126280711
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1126280708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 23f979b7ef09bf44aa8fd8594f30f72e, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 23f979b7ef09bf44aa8fd8594f30f72e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1143492917
 Prefab:
   m_ObjectHideFlags: 0
@@ -439,12 +456,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodPrefab: {fileID: 125104, guid: b8f6ebae89d0a954e9689caf75b3086d, type: 2}
   badPrefab: {fileID: 116050, guid: 6e28c9ee19f4ba745a0788669c99efe1, type: 2}
-  numberOfGood: 100
-  numberOfBad: 100
+  numberOfGood: 50
+  numberOfBad: 50
   min: -25
   max: 25
-  life: 20
-  speed: 8
+  life: 30
+  speed: 9
 --- !u!4 &1182823847
 Transform:
   m_ObjectHideFlags: 0
@@ -496,7 +513,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a185bbc6b0e8b0e468bcae59c849ca37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTimer: 20
+  myTimer: 5
+  timerDone: 0
+--- !u!1 &1442914121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1442914122}
+  m_Layer: 0
+  m_Name: Exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1442914122
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1442914121}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 745, y: 449, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1001 &1699602335
 Prefab:
   m_ObjectHideFlags: 0
@@ -1029,12 +1074,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodPrefab: {fileID: 125104, guid: b8f6ebae89d0a954e9689caf75b3086d, type: 2}
   badPrefab: {fileID: 116050, guid: 6e28c9ee19f4ba745a0788669c99efe1, type: 2}
-  numberOfGood: 100
-  numberOfBad: 100
+  numberOfGood: 50
+  numberOfBad: 50
   min: -25
   max: 25
-  life: 20
-  speed: 8
+  life: 30
+  speed: 9
 --- !u!4 &2045600988
 Transform:
   m_ObjectHideFlags: 0

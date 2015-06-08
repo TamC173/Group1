@@ -1,0 +1,7 @@
+Demon Animation Frames
+
+Idle:1-48
+
+Left Arm:50-85
+
+Right Arm:87-115

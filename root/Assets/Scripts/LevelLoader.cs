@@ -27,8 +27,6 @@ public class LevelLoader : Singleton<LevelLoader>
     public void StartLevel1()
     {
         Application.LoadLevel("Falling");
-        ScoreManager.instance.Score = 0;
-
     }
 
     public void StartLevel2()

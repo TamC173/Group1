@@ -39,32 +39,37 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
         };
     }
-
+ 
     // Use this for initialization
     void Start() { }
 
+    bool KeyDown = false;
     // Update is called once per frame
     void Update()
     {
-        if (score >= 35) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            print("great");
+            print("SPACE PRESSED");
+            Camera.main.GetComponent<Animation>().Play();
         }
         float x = Input.GetAxis("Horizontal") * Time.smoothDeltaTime * speed;
         //print(x);
         float y = Input.GetAxis("Vertical") * Time.smoothDeltaTime * speed;
 
         Vector3 pos = transform.position;
+        
 
         //pos.x = Mathf.Clamp (pos.x + x, -5, 5); // Restrict Player's X to the edge of screen
         //pos.z = Mathf.Clamp (pos.z + y, -5, 5); // Restrict Player's Y to the edge of screen
 
         //If player reaches the edge, go to the opposite side
-        //if (pos.x >= 10 || pos.x <= -10) { pos.x = -pos.x; }
-        //if (pos.z >= 10 || pos.z <= -10) { pos.z = -pos.z; }
+        if (pos.x >= 60 || pos.x <= -60) { pos.x = -pos.x; }
+        if (pos.z >= 45 || pos.z <= -45) { pos.z = -pos.z; }
 
         transform.position = pos;
         transform.Translate(x, 0, y, Space.Self);
 
     }
+
+    
 }
