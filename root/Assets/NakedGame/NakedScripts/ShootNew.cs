@@ -9,8 +9,13 @@ public class ShootNew : MonoBehaviour
     public float maxAmmo = 10f;
     public GUIText ammoText;
 	public Timer _timer;
+	AudioSource audioSound;
 
+	void Start () 
+	{
+		audioSound = GetComponent<AudioSource> ();
 
+	}
  
     // Update is called once per frame
     void Update()
@@ -18,6 +23,7 @@ public class ShootNew : MonoBehaviour
         
 		if (Input.GetButtonUp("Fire1") && ammo > 0) // fires cannon, checks if cannon has fired
         {
+	
 
           	GameObject clone = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
 			clone.transform.SetParent(gameObject.transform);
@@ -26,16 +32,18 @@ public class ShootNew : MonoBehaviour
 			clone.GetComponent<Rigidbody>().AddForce(transform.forward * speed); //shoots bullets of gun's facing position
 			clone.transform.SetParent(null);
 
-           //clone.transform = transform.TransformDirection(0, 0, speed);
+				//clone.transform = transform.TransformDirection(0, 0, speed);
             ammo --;
 
 
             Destroy(clone.gameObject, 5);
 			ParticleSystem particle = GetComponent<ParticleSystem>();
-			particle.Play();
+
             
             particle.enableEmission = true;
 			ammoText.text = "Ammo: " + ammo + "/" + maxAmmo; // prints ammo counter to screen
+
+			audioSound.Play ();
 		
 		}
 

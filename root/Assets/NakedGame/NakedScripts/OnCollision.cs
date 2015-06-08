@@ -9,10 +9,12 @@ public class OnCollision : MonoBehaviour {
 	public GameObject shirt;
 	public GameObject pants;
 	public GameObject shoes;
-
+	AudioSource audioSound;
+	AudioSource audioSound2;
 
 	void Start () 
 	{
+		audioSound = GetComponent<AudioSource> ();
 		/*shirt.SetActive (false); // sets shirt, pants, and shoes to be turned off
 		pants.SetActive (false);
 		shoes.SetActive (false); */
@@ -22,16 +24,18 @@ public class OnCollision : MonoBehaviour {
 	void Update () 
 	{
 	}
-	
+
 	void OnCollisionEnter(Collision other)
 	{
 
+
 		print ("shot"); //checks if AI was shot
 		if (other.gameObject.tag != "bullet")return;
-	
 			Destroy (other.gameObject);
 			//Destroy ();
 		print ("other tag is " + other.gameObject.tag);
+		audioSound.Play ();
+
 		health --;
 		if (health <= 0) {
 			Destroy (gameObject);
