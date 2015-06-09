@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         if (spaceGame)
-         winScore = gameObject.GetComponent<SpawningEnemies>().numberOfEnemies - 1;
+         winScore = gameObject.GetComponent<SpawningEnemies>().numberOfEnemies;
     }
     
     //private score.
