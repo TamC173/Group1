@@ -397,8 +397,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fTimer: {fileID: 0}
-  winLvl: Map_Layout
-  loseLvl: Map_Layout
+  winLvl: SI_Win
+  loseLvl: SI_Lose
   winScore: 15
   usingTimer: 0
   spaceGame: 1
