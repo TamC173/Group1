@@ -515,6 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTimer: 20
   timerDone: 0
+  show: 1
 --- !u!1 &1442914121
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,11 +5,7 @@ public class Timer : MonoBehaviour {
 
     public float myTimer = 30f;
 	public bool timerDone = false;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
+    public bool show;
 
     public void OnGUI()
     {
@@ -18,7 +14,8 @@ public class Timer : MonoBehaviour {
         myStyle.normal.textColor = Color.yellow;
         //Display the timer
         string text = "Timer: " + myTimer;
-        GUI.Label(new Rect(10, 10, 150, 100), text, myStyle);
+        if(show)
+            GUI.Label(new Rect(10, 10, 150, 100), text, myStyle);
     }
 	
 	// Update is called once per frame

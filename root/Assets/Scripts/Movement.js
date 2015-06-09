@@ -33,9 +33,21 @@ function OnTriggerEnter(col : Collider)
 
     function OnCollisionEnter(collision : Collision)
         {
-            if(collision)
+            if(collision.gameObject.name == "left")
+            {
                 GetComponent.<AudioSource>().PlayOneShot(bump);
+            }
+            else if(collision.gameObject.name == "right")
+            {
+                GetComponent.<AudioSource>().PlayOneShot(bump);
+            }
         }
+    /*function OnCollisionEnter(collision : Collision)
+        {
+          //  if(collision)
+            //  GetComponent.<AudioSource>().PlayOneShot(bump);
+            GetComponent.<AudioSource>().PlayOneShot(fire);
+        }*/
 
 
     /*function OnDestroy()
@@ -70,7 +82,7 @@ function OnTriggerEnter(col : Collider)
    
 
 
-    if (Input.GetKeyUp("up") && Time.time > nextFire)
+    if (Input.GetKeyUp("space") && Time.time > nextFire)
         {
             var spawn_bullet = Instantiate (bullet, transform.position, Quaternion.identity);
             spawn_bullet.GetComponent.<Rigidbody>().AddForce(Vector3.up * 115);
