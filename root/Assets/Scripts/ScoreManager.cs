@@ -28,6 +28,9 @@ public class ScoreManager : MonoBehaviour
             if (this != _instance)
                 Destroy(this.gameObject);
         }
+
+        if (spaceGame)
+         winScore = gameObject.GetComponent<SpawningEnemies>().numberOfEnemies - 1;
     }
     
     //private score.
@@ -47,25 +50,49 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
 
-
-        if(fTimer.timerDone)
+        if (usingTimer)
+        {
+            if (fTimer.timerDone)
+            {
+                print("using timer");
+                //iwin
+                if (_score >= winScore)
+                {
+                    //tell gameman u won or something
+                    Application.LoadLevel(winLvl);
+                }
+                //u suck :(
+                else
+                    Application.LoadLevel(loseLvl);
+            }
+        }
+        else if(!usingTimer)
         {
             //iwin
-            if (_score >= 15)
+            if (_score >= winScore)
             {
+                print("u win");
                 //tell gameman u won or something
-                Application.LoadLevel("FallingEnd");
+                Application.LoadLevel(winLvl);
             }
-            //u suck :(
-            else
-                Application.LoadLevel("Map_Layout");
+            
         }
     }
 
     public Timer fTimer;
     private static ScoreManager _instance;
+    public string winLvl = "FallingEnd";
+    public string loseLvl = "Map_Layout";
+    public int winScore = 15;
+    public bool usingTimer = true;
+    public bool spaceGame = false;
     
 }
