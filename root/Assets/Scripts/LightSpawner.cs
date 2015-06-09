@@ -15,14 +15,14 @@ public class LightSpawner : MonoBehaviour
 	}
     
 
-    private int xBounds = 250;
-    private int zBounds = 250;
-	  
+    private int xBounds = 200;
+    private int zBounds = 200;
+    private int yBounds = 100;  
 
 	void Spawn() 
     {       
         int x = Random.Range(0, xBounds);
-        int y = 0;
+        int y = Random.Range(yBounds, 200);
         int z = Random.Range(0, zBounds);
        
         Vector3 randomPosition = new Vector3(x, y, z);
